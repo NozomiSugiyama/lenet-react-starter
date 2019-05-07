@@ -1,8 +1,8 @@
 // flow-typed signature: 72cb54db24df27a7bac24b0b302df296
 // flow-typed version: 6cb74e5628/webpack_v4.x.x/flow_>=v0.71.x
 
-import * as http from 'http';
-import fs from 'fs';
+import * as http from 'http'
+import fs from 'fs'
 
 declare module 'webpack' {
   declare class WebpackError extends Error {
@@ -17,23 +17,23 @@ declare module 'webpack' {
     toString(options?: StatsOptions & { colors?: boolean }): string;
   }
 
-  declare type Callback = (error: WebpackError, stats: Stats) => void;
-  declare type WatchHandler = (error: WebpackError, stats: Stats) => void;
+  declare type Callback = (error: WebpackError, stats: Stats) => void
+  declare type WatchHandler = (error: WebpackError, stats: Stats) => void
 
   declare type Watching = {
     close(): void,
-    invalidate(): void,
-  };
+    invalidate(): void
+  }
 
   declare type WebpackCompiler = {
     run(callback: Callback): void,
-    watch(options: WatchOptions, handler: WatchHandler): Watching,
-  };
+    watch(options: WatchOptions, handler: WatchHandler): Watching
+  }
 
   declare type WebpackMultiCompiler = {
     run(callback: Callback): void,
-    watch(options: WatchOptions, handler: WatchHandler): Watching,
-  };
+    watch(options: WatchOptions, handler: WatchHandler): Watching
+  }
 
   declare class WebpackCompilation {
     constructor(compiler: WebpackCompiler): WebpackCompilation;
@@ -45,21 +45,21 @@ declare module 'webpack' {
     // <...>
   }
 
-  declare type NonEmptyArrayOfUniqueStringValues = Array<string>;
+  declare type NonEmptyArrayOfUniqueStringValues = Array<string>
 
   declare type EntryObject = {
-    [k: string]: string | NonEmptyArrayOfUniqueStringValues,
-  };
+    [k: string]: string | NonEmptyArrayOfUniqueStringValues
+  }
 
-  declare type EntryItem = string | NonEmptyArrayOfUniqueStringValues;
+  declare type EntryItem = string | NonEmptyArrayOfUniqueStringValues
 
-  declare type EntryStatic = EntryObject | EntryItem;
+  declare type EntryStatic = EntryObject | EntryItem
 
-  declare type EntryDynamic = () => EntryStatic | Promise<EntryStatic>;
+  declare type EntryDynamic = () => EntryStatic | Promise<EntryStatic>
 
-  declare type Entry = EntryDynamic | EntryStatic;
+  declare type Entry = EntryDynamic | EntryStatic
 
-  declare type ArrayOfStringValues = Array<string>;
+  declare type ArrayOfStringValues = Array<string>
 
   declare type ExternalItem =
     | string
@@ -67,28 +67,19 @@ declare module 'webpack' {
         [k: string]:
           | string
           | {
-              [k: string]: any,
+              [k: string]: any
             }
           | ArrayOfStringValues
-          | boolean,
+          | boolean
       }
-    | RegExp;
+    | RegExp
 
   declare type Externals =
-    | ((
-        context: string,
-        request: string,
-        callback: (err?: Error, result?: string) => void
-      ) => void)
+    | ((context: string, request: string, callback: (err?: Error, result?: string) => void) => void)
     | ExternalItem
     | Array<
-        | ((
-            context: string,
-            request: string,
-            callback: (err?: Error, result?: string) => void
-          ) => void)
-        | ExternalItem
-      >;
+        ((context: string, request: string, callback: (err?: Error, result?: string) => void) => void) | ExternalItem
+      >
 
   declare type RuleSetCondition =
     | RegExp
@@ -101,18 +92,16 @@ declare module 'webpack' {
         include?: RuleSetConditionOrConditions,
         not?: RuleSetConditions,
         or?: RuleSetConditions,
-        test?: RuleSetConditionOrConditions,
-      };
+        test?: RuleSetConditionOrConditions
+      }
 
-  declare type RuleSetConditions = Array<RuleSetCondition>;
+  declare type RuleSetConditions = Array<RuleSetCondition>
 
-  declare type RuleSetConditionOrConditions =
-    | RuleSetCondition
-    | RuleSetConditions;
+  declare type RuleSetConditionOrConditions = RuleSetCondition | RuleSetConditions
 
-  declare type RuleSetLoader = string;
+  declare type RuleSetLoader = string
 
-  declare type RuleSetQuery = { [k: string]: any } | string;
+  declare type RuleSetQuery = { [k: string]: any } | string
 
   declare type RuleSetUseItem =
     | RuleSetLoader
@@ -121,10 +110,10 @@ declare module 'webpack' {
         ident?: string,
         loader?: RuleSetLoader,
         options?: RuleSetQuery,
-        query?: RuleSetQuery,
-      };
+        query?: RuleSetQuery
+      }
 
-  declare type RuleSetUse = RuleSetUseItem | Function | Array<RuleSetUseItem>;
+  declare type RuleSetUse = RuleSetUseItem | Function | Array<RuleSetUseItem>
 
   declare type RuleSetRule = {
     compiler?: RuleSetConditionOrConditions,
@@ -137,7 +126,7 @@ declare module 'webpack' {
     oneOf?: RuleSetRules,
     options?: RuleSetQuery,
     parser?: {
-      [k: string]: any,
+      [k: string]: any
     },
     query?: RuleSetQuery,
     resolve?: ResolveOptions,
@@ -146,16 +135,11 @@ declare module 'webpack' {
     rules?: RuleSetRules,
     sideEffects?: boolean,
     test?: RuleSetConditionOrConditions,
-    type?:
-      | 'javascript/auto'
-      | 'javascript/dynamic'
-      | 'javascript/esm'
-      | 'json'
-      | 'webassembly/experimental',
-    use?: RuleSetUse,
-  };
+    type?: 'javascript/auto' | 'javascript/dynamic' | 'javascript/esm' | 'json' | 'webassembly/experimental',
+    use?: RuleSetUse
+  }
 
-  declare type RuleSetRules = Array<RuleSetRule>;
+  declare type RuleSetRules = Array<RuleSetRule>
 
   declare type ModuleOptions = {
     defaultRules?: RuleSetRules,
@@ -174,8 +158,8 @@ declare module 'webpack' {
     unsafeCache?: boolean | Function,
     wrappedContextCritical?: boolean,
     wrappedContextRecursive?: boolean,
-    wrappedContextRegExp?: RegExp,
-  };
+    wrappedContextRegExp?: RegExp
+  }
 
   declare type NodeOptions = {
     Buffer?: false | true | 'mock',
@@ -184,15 +168,15 @@ declare module 'webpack' {
     console?: false | true | 'mock',
     global?: boolean,
     process?: false | true | 'mock',
-    [k: string]: false | true | 'mock' | 'empty',
-  };
+    [k: string]: false | true | 'mock' | 'empty'
+  }
 
-  declare type WebpackPluginFunction = (compiler: WebpackCompiler) => void;
+  declare type WebpackPluginFunction = (compiler: WebpackCompiler) => void
 
   declare type WebpackPluginInstance = {
     apply: WebpackPluginFunction,
-    [k: string]: any,
-  };
+    [k: string]: any
+  }
 
   declare type OptimizationSplitChunksOptions = {
     automaticNameDelimiter?: string,
@@ -216,14 +200,14 @@ declare module 'webpack' {
             name?: boolean | Function | string,
             priority?: number,
             reuseExistingChunk?: boolean,
-            test?: Function | string | RegExp,
-          },
+            test?: Function | string | RegExp
+          }
     },
     chunks?: ('initial' | 'async' | 'all') | Function,
     fallbackCacheGroup?: {
       automaticNameDelimiter?: string,
       maxSize?: number,
-      minSize?: number,
+      minSize?: number
     },
     filename?: string,
     hidePathInfo?: boolean,
@@ -232,8 +216,8 @@ declare module 'webpack' {
     maxSize?: number,
     minChunks?: number,
     minSize?: number,
-    name?: boolean | Function | string,
-  };
+    name?: boolean | Function | string
+  }
 
   declare type OptimizationOptions = {
     checkWasmTypes?: boolean,
@@ -259,18 +243,18 @@ declare module 'webpack' {
       | boolean
       | ('single' | 'multiple')
       | {
-          name?: string | Function,
+          name?: string | Function
         },
     sideEffects?: boolean,
     splitChunks?: false | OptimizationSplitChunksOptions,
-    usedExports?: boolean,
-  };
+    usedExports?: boolean
+  }
 
   declare type LibraryCustomUmdObject = {
     amd?: string,
     commonjs?: string,
-    root?: string | ArrayOfStringValues,
-  };
+    root?: string | ArrayOfStringValues
+  }
 
   declare type OutputOptions = {
     auxiliaryComment?:
@@ -279,7 +263,7 @@ declare module 'webpack' {
           amd?: string,
           commonjs?: string,
           commonjs2?: string,
-          root?: string,
+          root?: string
         },
     chunkCallbackName?: string,
     chunkFilename?: string,
@@ -324,17 +308,17 @@ declare module 'webpack' {
     sourcePrefix?: string,
     strictModuleExceptionHandling?: boolean,
     umdNamedDefine?: boolean,
-    webassemblyModuleFilename?: string,
-  };
+    webassemblyModuleFilename?: string
+  }
 
   declare type PerformanceOptions = {
     assetFilter?: Function,
     hints?: false | 'warning' | 'error',
     maxAssetSize?: number,
-    maxEntrypointSize?: number,
-  };
+    maxEntrypointSize?: number
+  }
 
-  declare type ArrayOfStringOrStringArrayValues = Array<string | Array<string>>;
+  declare type ArrayOfStringOrStringArrayValues = Array<string | Array<string>>
 
   declare type ResolveOptions = {
     alias?:
@@ -342,7 +326,7 @@ declare module 'webpack' {
       | Array<{
           alias?: string,
           name?: string,
-          onlyModule?: boolean,
+          onlyModule?: boolean
         }>,
     aliasFields?: ArrayOfStringOrStringArrayValues,
     cachePredicate?: Function,
@@ -361,12 +345,12 @@ declare module 'webpack' {
     resolver?: { [k: string]: any },
     symlinks?: boolean,
     unsafeCache?: boolean | { [k: string]: any },
-    useSyncFileSystemCalls?: boolean,
-  };
+    useSyncFileSystemCalls?: boolean
+  }
 
-  declare type FilterItemTypes = RegExp | string | Function;
+  declare type FilterItemTypes = RegExp | string | Function
 
-  declare type FilterTypes = FilterItemTypes | Array<FilterItemTypes>;
+  declare type FilterTypes = FilterItemTypes | Array<FilterItemTypes>
 
   declare type StatsOptions =
     | boolean
@@ -392,7 +376,7 @@ declare module 'webpack' {
               green?: string,
               magenta?: string,
               red?: string,
-              yellow?: string,
+              yellow?: string
             },
         context?: string,
         depth?: boolean,
@@ -421,15 +405,15 @@ declare module 'webpack' {
         usedExports?: boolean,
         version?: boolean,
         warnings?: boolean,
-        warningsFilter?: FilterTypes,
-      };
+        warningsFilter?: FilterTypes
+      }
 
   declare type WatchOptions = {
     aggregateTimeout?: number,
     ignored?: { [k: string]: any },
     poll?: boolean | number,
-    stdin?: boolean,
-  };
+    stdin?: boolean
+  }
 
   declare type WebpackOptions = {
     amd?: { [k: string]: any },
@@ -452,7 +436,7 @@ declare module 'webpack' {
         | boolean
         | {
             rewrites?: Array<{ from: string, to: string }>,
-            disableDotRule?: boolean,
+            disableDotRule?: boolean
           },
       host?: string,
       hot?: boolean,
@@ -462,7 +446,7 @@ declare module 'webpack' {
         | {
             key: string,
             cert: string,
-            ca?: string,
+            ca?: string
           },
       index?: string,
       inline?: boolean,
@@ -474,7 +458,7 @@ declare module 'webpack' {
         | boolean
         | {
             errors?: boolean,
-            warnings?: boolean,
+            warnings?: boolean
           },
       pfx?: string,
       pfxPassphrase?: string,
@@ -494,17 +478,13 @@ declare module 'webpack' {
         lastModified?: boolean,
         maxAge?: number,
         redirect?: boolean,
-        setHeaders?: (
-          res: http.OutgoingMessage,
-          path: string,
-          stat: fs.Stat
-        ) => void,
+        setHeaders?: (res: http.OutgoingMessage, path: string, stat: fs.Stat) => void
       },
       stats?: StatsOptions,
       useLocalIp?: boolean,
       watchContentBase?: boolean,
       watchOptions?: WatchOptions,
-      publicPath?: string,
+      publicPath?: string
     },
     devtool?:
       | '@cheap-eval-source-map'
@@ -578,17 +558,11 @@ declare module 'webpack' {
       | 'electron-renderer'
       | ((compiler: WebpackCompiler) => void),
     watch?: boolean,
-    watchOptions?: WatchOptions,
-  };
+    watchOptions?: WatchOptions
+  }
 
-  declare function builder(
-    options: WebpackOptions,
-    callback?: Callback
-  ): WebpackCompiler;
-  declare function builder(
-    options: WebpackOptions[],
-    callback?: Callback
-  ): WebpackMultiCompiler;
+  declare function builder(options: WebpackOptions, callback?: Callback): WebpackCompiler
+  declare function builder(options: WebpackOptions[], callback?: Callback): WebpackMultiCompiler
 
-  declare module.exports: typeof builder;
+  declare module.exports: typeof builder
 }
