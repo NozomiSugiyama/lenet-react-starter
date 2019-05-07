@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import './ToDo.modules.css'
-import LabeledItem from './LabeledItem'
+import LabeledItem from '../LabeledItem'
 
 export type ToDoItem = {
   key: string,

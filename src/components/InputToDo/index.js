@@ -1,7 +1,7 @@
 // @flow
 import React, { useRef } from 'react'
-import type { ToDoItem } from './ToDo'
-import Button from './Button'
+import type { ToDoItem } from '../ToDo'
+import Button from '../Button'
 import './InputToDo.modules.css'
 
 type Props = {
