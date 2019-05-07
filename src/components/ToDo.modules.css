@@ -1,0 +1,12 @@
+.ToDo {
+  padding: 0;
+  overflow: auto;
+}
+
+.ToDo li {
+  display: flex;
+}
+
+.ToDo li > :nth-child(3) {
+  flex-grow: 1;
+}
