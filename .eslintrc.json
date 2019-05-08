@@ -1,41 +1,44 @@
 {
-    "extends": [
-        "standard",
-        "plugin:flowtype/recommended",
-        "plugin:react/recommended",
-        "prettier"
-    ],
-    "plugins": [
-        "react",
-        "prettier",
-        "jsx-a11y",
-        "import",
-        "flowtype",
-        "jest"
-    ],
-    "settings": {
-        "react": {
-            "version": "16.8"
-        }
-    },
-    "parser": "babel-eslint",
-    "parserOptions": {},
-    "env": {
-      "browser": true,
-      "es6": true,
-      "jquery": true,
-      "jest/globals": true
-    },
-    "globals": {
-      "googletag": true,
-      "ga": true
-    },
-    "rules": {
-        "react/jsx-uses-react": 1,
-        "react/jsx-uses-vars": 1,
-        "no-console": "warn",
-        "jsx-a11y/href-no-hash": "off",
-        "jsx-a11y/anchor-is-valid": "off",
-        "prettier/prettier": "error"
-    }
+  "extends": [
+      "standard",
+      "plugin:flowtype/recommended",
+      "plugin:react/recommended",
+      "prettier"
+  ],
+  "plugins": [
+      "react",
+      "prettier",
+      "jsx-a11y",
+      "import",
+      "flowtype",
+      "flowtype-errors",
+      "jest"
+  ],
+  "settings": {
+      "react": {
+          "version": "16.8"
+      }
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {},
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jquery": true,
+    "jest/globals": true
+  },
+  "globals": {
+    "googletag": true,
+    "ga": true
+  },
+  "rules": {
+      "react/jsx-uses-react": 1,
+      "react/jsx-uses-vars": 1,
+      "no-console": "warn",
+      "jsx-a11y/href-no-hash": "off",
+      "jsx-a11y/anchor-is-valid": "off",
+      "flowtype-errors/show-errors": 2,
+      "flowtype-errors/show-warnings": 1,
+      "prettier/prettier": "error"
+  }
 }
