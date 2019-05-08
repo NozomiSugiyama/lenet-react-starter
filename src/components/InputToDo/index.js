@@ -1,8 +1,8 @@
 // @flow
 import React, { useRef, useState } from 'react'
-import type { ToDoItem } from '../ToDo'
 import Button from '../Button'
 import './InputToDo.modules.css'
+import type { ToDoItem } from '../../reducers/reducer.js'
 
 type Props = {
   save: (todo: ToDoItem) => void

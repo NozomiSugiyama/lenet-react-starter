@@ -7,16 +7,11 @@ import DialogBody from '../DialogBody'
 import DialogHeader from '../DialogHeader'
 import DialogFooter from '../DialogFooter'
 import Button from '../Button'
-
-export type ToDoItem = {
-  key: string,
-  title: string,
-  days: number
-}
+import type { ToDoItem } from '../../reducers/reducer.js'
 
 type Props = {
   toDoList: ToDoItem[],
-  deleteToDo: (key: string) => void
+  deleteToDo: (toDo: ToDoItem) => void
 }
 
 const ToDo = ({ toDoList, deleteToDo }: Props) => {
@@ -42,7 +37,7 @@ const ToDo = ({ toDoList, deleteToDo }: Props) => {
         <DialogFooter>
           <Button
             onClick={() => {
-              selectedToDo && deleteToDo(selectedToDo.key)
+              selectedToDo && deleteToDo(selectedToDo)
               selectToDo(null)
             }}
           >

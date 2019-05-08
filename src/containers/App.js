@@ -1,24 +1,46 @@
 // @flow
-import React, { useState } from 'react'
+import React from 'react'
 import './App.css'
 import ToDo from '../components/ToDo'
 import InputToDo from '../components/InputToDo'
-import type { ToDoItem } from '../components/Todo'
+import { connect } from 'react-redux'
+import Actions from '../actions/AppActions'
+import type { ToDoItem } from '../reducers/reducer'
 
-type Props = {}
+type Props = {
+  handleAddToDo: (toDo: ToDoItem) => void,
+  handleDeleteToDo: (toDo: ToDoItem) => void,
+  toDoList: ToDoItem[]
+}
 
-const App = (props: Props) => {
-  const [toDoList, setToDoList] = useState<ToDoItem[]>([])
-
+const App = ({ handleAddToDo, handleDeleteToDo, toDoList }: Props) => {
   return (
     <div className="App">
       <main>
-        <InputToDo save={(todo: ToDoItem) => setToDoList(toDoList => toDoList.concat(todo))} />
+        <InputToDo save={(toDo: ToDoItem) => handleAddToDo(toDo)} />
         <hr />
-        <ToDo toDoList={toDoList} deleteToDo={key => setToDoList(toDoList => toDoList.filter(x => x.key !== key))} />
+        <ToDo toDoList={toDoList} deleteToDo={toDo => handleDeleteToDo(toDo)} />
       </main>
     </div>
   )
 }
 
-export default App
+const mapStateToProps = state => {
+  return state
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleAddToDo(value) {
+      dispatch(Actions.addToDo(value))
+    },
+    handleDeleteToDo(value) {
+      dispatch(Actions.deleteToDo(value))
+    }
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
