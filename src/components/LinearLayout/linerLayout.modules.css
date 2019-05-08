@@ -1,0 +1,11 @@
+.LinerLayout {
+  display: flex;
+}
+
+.LinerLayout.Horizontal {
+  flex-direction: row;
+}
+
+.LinerLayout.Vertical {
+  flex-direction: column;
+}
