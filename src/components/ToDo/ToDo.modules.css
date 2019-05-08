@@ -7,6 +7,6 @@
   display: flex;
 }
 
-.ToDo li > :nth-child(3) {
+.ToDo li > :nth-child(1) {
   flex-grow: 1;
 }

@@ -9,18 +9,11 @@ type Props = {}
 
 const App = (props: Props) => {
   const [toDoList, setToDoList] = useState<ToDoItem[]>([])
-  const [days, setDays] = useState<number>(0)
 
   return (
     <div className="App">
       <main>
-        <InputToDo
-          title="aaaaaaa"
-          days={days}
-          addDay={() => setDays(days + 1)}
-          subtractionDay={() => setDays(days - 1)}
-          save={(todo: ToDoItem) => setToDoList(toDoList.concat(todo))}
-        />
+        <InputToDo save={(todo: ToDoItem) => setToDoList(toDoList => toDoList.concat(todo))} />
         <hr />
         <ToDo toDoList={toDoList} />
       </main>

@@ -1,19 +1,17 @@
 // @flow
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import type { ToDoItem } from '../ToDo'
 import Button from '../Button'
 import './InputToDo.modules.css'
 
 type Props = {
-  title: string,
-  days: number,
-  addDay: () => void,
-  subtractionDay: () => void,
   save: (todo: ToDoItem) => void
 }
 
-const InputTodo = ({ title, days, addDay, subtractionDay, save }: Props) => {
+const InputTodo = ({ save }: Props) => {
   const todoValueElement = useRef<HTMLInputElement | null>(null)
+  const [title, setTitle] = useState<string>('')
+  const [days, setDays] = useState<number>(0)
 
   return (
     <div className="InputToDo">
@@ -21,8 +19,8 @@ const InputTodo = ({ title, days, addDay, subtractionDay, save }: Props) => {
         <h2>title: {title}</h2>
         <div>
           <h3>days: {days}</h3>
-          <Button onClick={addDay}>加算ボタン</Button>
-          <Button onClick={subtractionDay}>減算ボタン</Button>
+          <Button onClick={() => setDays(n => n + 1)}>加算ボタン</Button>
+          <Button onClick={() => setDays(n => (n > 0 ? n - 1 : n))}>減算ボタン</Button>
         </div>
       </div>
       <form
@@ -38,10 +36,11 @@ const InputTodo = ({ title, days, addDay, subtractionDay, save }: Props) => {
             days
           })
           target.value = ''
+          setTitle('')
         }}
         className="InputToDo__form"
       >
-        <input ref={todoValueElement} />
+        <input ref={todoValueElement} onChange={e => setTitle(e.target.value)} />
         <Button component="button" type="submit">
           保存
         </Button>
@@ -51,3 +50,25 @@ const InputTodo = ({ title, days, addDay, subtractionDay, save }: Props) => {
 }
 
 export default InputTodo
+
+// const handleUpdateEmailFromSubmit = (
+//   {
+//       auth,
+//       notification
+//   }: {
+//       auth: AuthValue,
+//       notification: NotificationValue
+//   }
+// ) => async (e: React.FormEvent) => {
+//   e.preventDefault();
+
+//   const email = (e.target as any).elements["profile-credential-email"].value;
+
+//   try {
+//       await auth.updateEmail(email);
+//       notification.notification("info", "Send Mail");
+//   } catch (error) {
+//       notification.notification("error", error.message);
+//       console.error(error);
+//   }
+// };

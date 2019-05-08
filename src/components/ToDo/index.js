@@ -5,7 +5,6 @@ import LabeledItem from '../LabeledItem'
 
 export type ToDoItem = {
   key: string,
-  value: string,
   title: string,
   days: number
 }
@@ -20,7 +19,6 @@ const ToDo = ({ toDoList }: Props) => (
       <li key={x.key}>
         <LabeledItem label="title">{x.title}</LabeledItem>
         <LabeledItem label="days">{x.days}</LabeledItem>
-        <LabeledItem label="value">{x.value}</LabeledItem>
       </li>
     ))}
   </ul>
