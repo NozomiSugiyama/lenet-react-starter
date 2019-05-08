@@ -39,3 +39,12 @@
 .ToDo__DeleteButton::after {
   transform: rotate(-45deg);
 }
+
+.ToDo__DialogBody {
+  display: flex;
+  height: 2rem;
+}
+
+.ToDo__DialogBody > :first-child {
+  flex-grow: 1;
+}
