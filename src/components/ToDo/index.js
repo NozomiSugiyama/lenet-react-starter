@@ -10,15 +10,17 @@ export type ToDoItem = {
 }
 
 type Props = {
-  toDoList: ToDoItem[]
+  toDoList: ToDoItem[],
+  deleteToDo: (key: string) => void
 }
 
-const ToDo = ({ toDoList }: Props) => (
+const ToDo = ({ toDoList, deleteToDo }: Props) => (
   <ul className="ToDo">
     {toDoList.map(x => (
       <li key={x.key}>
         <LabeledItem label="title">{x.title}</LabeledItem>
         <LabeledItem label="days">{x.days}</LabeledItem>
+        <div className="ToDo__DeleteButton" onClick={() => deleteToDo(x.key)} />
       </li>
     ))}
   </ul>

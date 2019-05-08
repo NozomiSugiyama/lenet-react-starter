@@ -15,7 +15,7 @@ const App = (props: Props) => {
       <main>
         <InputToDo save={(todo: ToDoItem) => setToDoList(toDoList => toDoList.concat(todo))} />
         <hr />
-        <ToDo toDoList={toDoList} />
+        <ToDo toDoList={toDoList} deleteToDo={key => setToDoList(toDoList => toDoList.filter(x => x.key !== key))} />
       </main>
     </div>
   )
