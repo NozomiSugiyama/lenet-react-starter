@@ -50,25 +50,3 @@ const InputTodo = ({ save }: Props) => {
 }
 
 export default InputTodo
-
-// const handleUpdateEmailFromSubmit = (
-//   {
-//       auth,
-//       notification
-//   }: {
-//       auth: AuthValue,
-//       notification: NotificationValue
-//   }
-// ) => async (e: React.FormEvent) => {
-//   e.preventDefault();
-
-//   const email = (e.target as any).elements["profile-credential-email"].value;
-
-//   try {
-//       await auth.updateEmail(email);
-//       notification.notification("info", "Send Mail");
-//   } catch (error) {
-//       notification.notification("error", error.message);
-//       console.error(error);
-//   }
-// };
