@@ -2,10 +2,10 @@
 import React, { useRef, useState } from 'react'
 import Button from '../Button'
 import './InputToDo.modules.css'
-import type { ToDoItem } from '../../../types/toDo'
+import type { PostToDoItem } from '../../../types/toDo'
 
 type Props = {
-  save: (toDo: ToDoItem) => void
+  save: (toDo: PostToDoItem) => void
 }
 
 const InputTodo = ({ save }: Props) => {
@@ -30,8 +30,6 @@ const InputTodo = ({ save }: Props) => {
           if (!target) return
 
           save({
-            key: Math.random().toString(),
-            value: target.value || '',
             title,
             days
           })

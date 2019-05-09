@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import React, { useEffect } from 'react'
 import './App.css'
 import ToDo from '../components/ui/ToDo'
 import InputToDo from '../components/ui/InputToDo'
@@ -8,12 +8,14 @@ import Actions from '../actions/toDoList'
 import type { ToDoItem } from '../types/toDo'
 
 type Props = {
+  handleFetchToDo: () => void,
   handleAddToDo: (toDo: ToDoItem) => void,
   handleDeleteToDo: (toDo: ToDoItem) => void,
   toDoList: ToDoItem[]
 }
 
-const App = ({ handleAddToDo, handleDeleteToDo, toDoList }: Props) => {
+const App = ({ handleFetchToDo, handleAddToDo, handleDeleteToDo, toDoList }: Props) => {
+  useEffect(() => handleFetchToDo(), [])
   return (
     <div className="App">
       <main>
@@ -33,6 +35,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    handleFetchToDo() {
+      dispatch(Actions.fetchToDo())
+    },
     handleAddToDo(value) {
       dispatch(Actions.addToDo(value))
     },

@@ -21,7 +21,7 @@ const ToDo = ({ toDoList, deleteToDo }: Props) => {
     <Fragment>
       <ul className="ToDo">
         {toDoList.map(x => (
-          <li key={x.key}>
+          <li key={x.id}>
             <LabeledItem label="title">{x.title}</LabeledItem>
             <LabeledItem label="days">{x.days}</LabeledItem>
             <div className="ToDo__DeleteButton" onClick={() => selectToDo(x)} />
