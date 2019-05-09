@@ -65,5 +65,10 @@ URL http://localhost:6006/
 
 `yarn add global storybook`
 
+## `yarn run json-server --watch mock/db.json`
 
+Mock serverの起動
+URL http://localhost:3000/
+
+DBの設定情報は `mock/db.json` に格納
 
