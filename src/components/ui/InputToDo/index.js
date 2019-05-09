@@ -2,14 +2,14 @@
 import React, { useRef, useState } from 'react'
 import Button from '../Button'
 import './InputToDo.modules.css'
-import type { ToDoItem } from '../../reducers/reducer.js'
+import type { ToDoItem } from '../../../types/toDo'
 
 type Props = {
-  save: (todo: ToDoItem) => void
+  save: (toDo: ToDoItem) => void
 }
 
 const InputTodo = ({ save }: Props) => {
-  const todoValueElement = useRef<HTMLInputElement | null>(null)
+  const toDoValueElement = useRef<HTMLInputElement | null>(null)
   const [title, setTitle] = useState<string>('')
   const [days, setDays] = useState<number>(0)
 
@@ -26,7 +26,7 @@ const InputTodo = ({ save }: Props) => {
       <form
         onSubmit={e => {
           e.preventDefault()
-          const target = todoValueElement.current
+          const target = toDoValueElement.current
           if (!target) return
 
           save({
@@ -40,7 +40,7 @@ const InputTodo = ({ save }: Props) => {
         }}
         className="InputToDo__form"
       >
-        <input ref={todoValueElement} onChange={e => setTitle(e.target.value)} />
+        <input ref={toDoValueElement} onChange={e => setTitle(e.target.value)} />
         <Button component="button" type="submit">
           保存
         </Button>

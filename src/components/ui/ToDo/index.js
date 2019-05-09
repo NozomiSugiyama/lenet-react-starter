@@ -7,7 +7,7 @@ import DialogBody from '../DialogBody'
 import DialogHeader from '../DialogHeader'
 import DialogFooter from '../DialogFooter'
 import Button from '../Button'
-import type { ToDoItem } from '../../reducers/reducer.js'
+import type { ToDoItem } from '../../../types/toDo'
 
 type Props = {
   toDoList: ToDoItem[],

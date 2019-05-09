@@ -1,11 +1,11 @@
 // @flow
 import React from 'react'
 import './App.css'
-import ToDo from '../components/ToDo'
-import InputToDo from '../components/InputToDo'
+import ToDo from '../components/ui/ToDo'
+import InputToDo from '../components/ui/InputToDo'
 import { connect } from 'react-redux'
-import Actions from '../actions/AppActions'
-import type { ToDoItem } from '../reducers/reducer'
+import Actions from '../actions/toDoList'
+import type { ToDoItem } from '../reducers/toDoList'
 
 type Props = {
   handleAddToDo: (toDo: ToDoItem) => void,
@@ -26,7 +26,9 @@ const App = ({ handleAddToDo, handleDeleteToDo, toDoList }: Props) => {
 }
 
 const mapStateToProps = state => {
-  return state
+  return {
+    toDoList: state.toDoList.toDoList
+  }
 }
 
 const mapDispatchToProps = dispatch => {
