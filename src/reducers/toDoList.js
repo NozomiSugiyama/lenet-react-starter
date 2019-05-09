@@ -15,7 +15,7 @@ const initialState: State = {
 
 const reducer = (state: State = initialState, action: Action): Exact<State> => {
   switch (action.type) {
-    case Actions.ADD_TODO: {
+    case Actions.CREATE_TODO: {
       return { ...state, toDoList: state.toDoList.concat(action.value) }
     }
     case Actions.DELETE_TODO: {

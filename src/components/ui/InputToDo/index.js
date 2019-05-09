@@ -2,10 +2,10 @@
 import React, { useRef, useState } from 'react'
 import Button from '../Button'
 import './InputToDo.modules.css'
-import type { PostToDoItem } from '../../../types/toDo'
+import type { CreateToDoItem } from '../../../types/toDo'
 
 type Props = {
-  save: (toDo: PostToDoItem) => void
+  save: (toDo: CreateToDoItem) => void
 }
 
 const InputTodo = ({ save }: Props) => {

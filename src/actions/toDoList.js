@@ -1,15 +1,15 @@
 // @flow
 
-import type { ToDoItem } from '../types/toDo'
+import type { ToDoItem, CreateToDoItem } from '../types/toDo'
 import * as toDoListApi from '../api/to_do_list'
 
 export type Action = {
-  type: 'ADD_TODO' | 'DELETE_TODO' | 'FETCH_TODO',
+  type: 'CREATE_TODO' | 'DELETE_TODO' | 'FETCH_TODO',
   value: ToDoItem
 }
 
 const Actions = {
-  ADD_TODO: 'ADD_TODO',
+  CREATE_TODO: 'CREATE_TODO',
   DELETE_TODO: 'DELETE_TODO',
   FETCH_TODO: 'FETCH_TODO',
   FETCH_FAILED: 'FETCH_FAILED',
@@ -17,15 +17,15 @@ const Actions = {
     return dispatch =>
       toDoListApi
         .read()
-        .then(toDoList => dispatch({ type: Actions.ADD_TODO, value: toDoList }))
-        .catch(_error => dispatch({ type: Actions.ADD_TODO, value: {} }))
+        .then(toDoList => dispatch({ type: Actions.CREATE_TODO, value: toDoList }))
+        .catch(_error => dispatch({ type: Actions.CREATE_TODO, value: {} }))
   },
-  addToDo(value: ToDoItem): (dispatch: (x: Action) => void) => Promise<void> {
+  createToDo(value: CreateToDoItem): (dispatch: (x: Action) => void) => Promise<void> {
     return dispatch =>
       toDoListApi
         .create(value)
-        .then((toDo: ToDoItem) => dispatch({ type: Actions.ADD_TODO, value: toDo }))
-        .catch(_error => dispatch({ type: Actions.ADD_TODO, value: {} }))
+        .then((toDo: ToDoItem) => dispatch({ type: Actions.CREATE_TODO, value: toDo }))
+        .catch(_error => dispatch({ type: Actions.CREATE_TODO, value: {} }))
   },
   deleteToDo(value: ToDoItem): (dispatch: (x: Action) => void) => Promise<void> {
     return dispatch =>

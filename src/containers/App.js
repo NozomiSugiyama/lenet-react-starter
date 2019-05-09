@@ -5,21 +5,21 @@ import ToDo from '../components/ui/ToDo'
 import InputToDo from '../components/ui/InputToDo'
 import { connect } from 'react-redux'
 import Actions from '../actions/toDoList'
-import type { ToDoItem } from '../types/toDo'
+import type { ToDoItem, CreateToDoItem } from '../types/toDo'
 
 type Props = {
   handleFetchToDo: () => void,
-  handleAddToDo: (toDo: ToDoItem) => void,
+  handleCreateToDo: (toDo: CreateToDoItem) => void,
   handleDeleteToDo: (toDo: ToDoItem) => void,
   toDoList: ToDoItem[]
 }
 
-const App = ({ handleFetchToDo, handleAddToDo, handleDeleteToDo, toDoList }: Props) => {
+const App = ({ handleFetchToDo, handleCreateToDo, handleDeleteToDo, toDoList }: Props) => {
   useEffect(() => handleFetchToDo(), [])
   return (
     <div className="App">
       <main>
-        <InputToDo save={(toDo: ToDoItem) => handleAddToDo(toDo)} />
+        <InputToDo save={(toDo: CreateToDoItem) => handleCreateToDo(toDo)} />
         <hr />
         <ToDo toDoList={toDoList} deleteToDo={toDo => handleDeleteToDo(toDo)} />
       </main>
@@ -38,8 +38,8 @@ const mapDispatchToProps = dispatch => {
     handleFetchToDo() {
       dispatch(Actions.fetchToDo())
     },
-    handleAddToDo(value) {
-      dispatch(Actions.addToDo(value))
+    handleCreateToDo(value) {
+      dispatch(Actions.createToDo(value))
     },
     handleDeleteToDo(value) {
       dispatch(Actions.deleteToDo(value))

@@ -8,7 +8,7 @@ export type ToDoItem = {
 
 export type ToDoList = ToDoItem[]
 
-export type PostToDoItem = {
+export type CreateToDoItem = {
   id?: string,
   title: string,
   days: number
