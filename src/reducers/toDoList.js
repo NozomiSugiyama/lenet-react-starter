@@ -1,14 +1,9 @@
 // @flow
-import Actions from '../actions/AppActions'
-import type { Action } from '../actions/AppActions'
+import Actions from '../actions/toDoList'
+import type { Action } from '../actions/toDoList'
+import type { ToDoItem } from '../types/toDo'
 
 type Exact<T> = T & $Shape<T>
-
-export type ToDoItem = {
-  key: string,
-  title: string,
-  days: number
-}
 
 type State = {
   toDoList: ToDoItem[]
