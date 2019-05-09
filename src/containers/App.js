@@ -5,7 +5,7 @@ import ToDo from '../components/ui/ToDo'
 import InputToDo from '../components/ui/InputToDo'
 import { connect } from 'react-redux'
 import Actions from '../actions/toDoList'
-import type { ToDoItem } from '../reducers/toDoList'
+import type { ToDoItem } from '../types/toDo'
 
 type Props = {
   handleAddToDo: (toDo: ToDoItem) => void,
