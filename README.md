@@ -65,10 +65,12 @@ URL http://localhost:6006/
 
 `yarn add global storybook`
 
-## `yarn run json-server --watch mock/db.json`
+## `yarn run json-server --watch mock/db.json -p 8080 -m mock/middleware.js`
 
 Mock serverの起動
 URL http://localhost:3000/
 
-DBの設定情報は `mock/db.json` に格納
-
+DBを作成
+```bash
+vm mock/db.json.sample mock/db.json
+```

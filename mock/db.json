@@ -1,14 +1,24 @@
 {
-  "todo": [
+  "to_do_list": [
     {
-      "id": 1,
-      "title": "hogehoge",
-      "day": 4
+      "title": "hoge",
+      "days": 0,
+      "id": 1
     },
     {
-      "id": 2,
-      "title": "piyopiyo",
-      "author": 3
+      "title": "test",
+      "days": 0,
+      "id": 3
+    },
+    {
+      "title": "asdf",
+      "days": 0,
+      "id": 4
+    },
+    {
+      "title": "asdl;kfj",
+      "days": 0,
+      "id": 6
     }
   ]
 }
