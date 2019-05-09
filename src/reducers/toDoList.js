@@ -15,11 +15,11 @@ const initialState: State = {
 
 const reducer = (state: State = initialState, action: Action): Exact<State> => {
   switch (action.type) {
-    case Actions.ADDTODO: {
+    case Actions.ADD_TODO: {
       return { ...state, toDoList: state.toDoList.concat(action.value) }
     }
-    case Actions.DELETETODO: {
-      return { ...state, toDoList: state.toDoList.filter(x => x.key !== action.value.key) }
+    case Actions.DELETE_TODO: {
+      return { ...state, toDoList: state.toDoList.filter(x => x.id !== action.value.id) }
     }
     default: {
       return state
