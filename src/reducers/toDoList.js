@@ -12,7 +12,7 @@ import {
   DELETE_TODO_FAILURE,
   type Action
 } from '../actions/toDoList'
-import { type ToDoList, type ToDoItem, type CreateToDoItem } from '../types/toDo'
+import { type ToDoList, type ToDoItem, type CreateToDoItem, type ToDoResponseItem } from '../types/toDo'
 import { type StatusCode } from '../types/statusCode'
 
 type Exact<T> = T & $Shape<T>
@@ -43,8 +43,12 @@ const reducer = (state: State = initialState, action: Action): Exact<State> => {
     }
     case FETCH_TODO_LIST_SUCCESS: {
       // TODO: Fix Type Cast
-      const payload: ToDoList = (action.payload: any)
-      return { ...state, toDoList: payload, status: { code: 'STABLE' } }
+      const payload: ToDoResponseItem[] = (action.payload: any)
+      return {
+        ...state,
+        toDoList: payload.map(x => ({ ...x, _status: { code: 'STABLE' } })),
+        status: { code: 'STABLE' }
+      }
     }
     case FETCH_TODO_LIST_FAILURE: {
       return { ...state, status: { code: 'ERROR', errors: action.errors } }
@@ -73,6 +77,7 @@ const reducer = (state: State = initialState, action: Action): Exact<State> => {
         toDoList: state.toDoList.map(x =>
           (x._meta && x._meta.temporaryId) === payload._meta.temporaryId
             ? {
+                ...payload,
                 id: (payload.id: any),
                 days: payload.days,
                 title: payload.title,

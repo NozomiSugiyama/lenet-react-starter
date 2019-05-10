@@ -15,6 +15,7 @@ type Props = {
 }
 
 const App = ({ handleFetchToDoList, handleCreateToDo, handleDeleteToDo, toDoList }: Props) => {
+  console.log(toDoList)
   useEffect(() => handleFetchToDoList(), [])
   return (
     <div className="App">
