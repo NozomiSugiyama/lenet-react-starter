@@ -1,21 +1,30 @@
 // @flow
 
-export type ToDoItem = {
+export type ToDoItem = {|
   id: string,
   title: string,
-  days: number
-}
+  days: number,
+  _status: {
+    code: 'FETCHING' | 'CREATING' | 'DELETING' | 'UPDATING' | 'STABLE' | 'ERROR',
+    errors?: [
+      {
+        message: string
+      }
+    ]
+  }
+|}
 
 export type ToDoList = ToDoItem[]
 
-export type CreateToDoItem = {
+export type CreateToDoItem = {|
   id?: string,
+  _id: string,
   title: string,
   days: number
-}
+|}
 
-export type UpdateToDoItem = {
+export type UpdateToDoItem = {|
   id: string,
   title?: string,
   days?: number
-}
+|}

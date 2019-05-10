@@ -1,0 +1,10 @@
+{
+    "flow.pathToFlow": "${workspaceFolder}/node_modules/flow-bin",
+    "flow.runOnAllFiles": true,
+    "flow.enabled": true,
+    "flow.runOnEdit": true,
+    "flow.showStatus": true,
+    "flow.stopFlowOnExit": true,
+    "flow.useNPMPackagedFlow": true,
+    "javascript.validate.enable": false
+}
