@@ -1,6 +1,16 @@
 // @flow
 import { type StatusCode } from './statusCode'
 
+export type ToDoResponseItem = {
+  id: string,
+  title: string,
+  days: number
+}
+
+export type ToDoMeta = {
+  temporaryId: string
+}
+
 export type ToDoItem = {|
   id: string,
   title: string,
@@ -12,16 +22,17 @@ export type ToDoItem = {|
         message: string
       }
     ]
-  }
+  },
+  _meta?: ToDoMeta
 |}
 
 export type ToDoList = ToDoItem[]
 
 export type CreateToDoItem = {|
   id?: string,
-  _id: string,
   title: string,
-  days: number
+  days: number,
+  _meta: ToDoMeta
 |}
 
 export type UpdateToDoItem = {|

@@ -1,14 +1,14 @@
 // @flow
 
 import type { Dispatch as ReduxDispatch } from 'redux'
-import { type ToDoItem, type ToDoList, type CreateToDoItem } from '../types/toDo'
+import { type ToDoItem, type ToDoList, type CreateToDoItem, type ToDoResponseItem } from '../types/toDo'
 import * as toDoListApi from '../api/to_do_list'
 
 type FETCH_TODO_LIST = 'FETCHING_TODO_LIST' | 'FETCH_TODO_LIST_SUCCESS' | 'FETCH_TODO_LIST_FAILURE'
 type CREATE_TODO_LIST = 'CREATING_TODO' | 'CREATE_TODO_SUCCESS' | 'CREATE_TODO_FAILURE'
 type DELETE_TODO_LIST = 'DELETING_TODO' | 'DELETE_TODO_SUCCESS' | 'DELETE_TODO_FAILURE'
 
-export type Action = $Exact<{
+export type Action = {|
   type: FETCH_TODO_LIST | CREATE_TODO_LIST | DELETE_TODO_LIST,
   payload?: ToDoItem | CreateToDoItem | ToDoList,
   errors?: [
@@ -16,7 +16,7 @@ export type Action = $Exact<{
       message: string
     }
   ]
-}>
+|}
 
 export type Thunk<A> = (() => Promise<void> | void) => A
 
@@ -42,18 +42,17 @@ export type CreateToDoAction = {|
   payload: CreateToDoItem
 |}
 export const createToDo = (payload: CreateToDoItem) => (dispatch: Dispatch) => {
-  const _id = Math.random().toString()
-  dispatch({ type: CREATING_TODO, payload: { ...payload, _id } })
+  const temporaryId = Math.random().toString()
+  dispatch({ type: CREATING_TODO, payload: { ...payload, id: temporaryId, _meta: { temporaryId } } })
   toDoListApi
     .create(payload)
-    .then((toDo: ToDoItem) => {
+    .then((toDo: ToDoResponseItem) => {
       const toDoCreate = {
         id: toDo.id,
-        _id,
         title: toDo.title,
         days: toDo.days
       }
-      dispatch({ type: CREATE_TODO_SUCCESS, payload: toDoCreate })
+      dispatch({ type: CREATE_TODO_SUCCESS, payload: { ...toDoCreate, _meta: { temporaryId } } })
     })
     .catch(error => dispatch({ type: CREATE_TODO_FAILURE, payload, errors: [error] }))
 }

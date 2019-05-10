@@ -55,10 +55,13 @@ const reducer = (state: State = initialState, action: Action): Exact<State> => {
       return {
         ...state,
         toDoList: state.toDoList.concat({
-          id: payload._id,
+          id: payload._meta.temporaryId,
           days: payload.days,
           title: payload.title,
-          _status: { code: 'CREATING' }
+          _status: { code: 'CREATING' },
+          _meta: {
+            temporaryId: payload._meta.temporaryId
+          }
         })
       }
     }
@@ -68,12 +71,12 @@ const reducer = (state: State = initialState, action: Action): Exact<State> => {
       return {
         ...state,
         toDoList: state.toDoList.map(x =>
-          x.id === payload._id
+          (x._meta && x._meta.temporaryId) === payload._meta.temporaryId
             ? {
-                id: payload.id || '',
+                id: (payload.id: any),
                 days: payload.days,
                 title: payload.title,
-                _status: payload.id ? { code: 'STABLE' } : { code: 'ERROR' }
+                _status: { code: 'STABLE' }
               }
             : x
         )
