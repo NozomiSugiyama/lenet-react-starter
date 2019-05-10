@@ -1,11 +1,12 @@
 // @flow
+import { type StatusCode } from './statusCode'
 
 export type ToDoItem = {|
   id: string,
   title: string,
   days: number,
   _status: {
-    code: 'FETCHING' | 'CREATING' | 'DELETING' | 'UPDATING' | 'STABLE' | 'ERROR',
+    code: StatusCode,
     errors?: [
       {
         message: string

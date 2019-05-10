@@ -13,13 +13,14 @@ import {
   type Action
 } from '../actions/toDoList'
 import { type ToDoList, type ToDoItem, type CreateToDoItem } from '../types/toDo'
+import { type StatusCode } from '../types/statusCode'
 
 type Exact<T> = T & $Shape<T>
 
 type State = {|
   toDoList: ToDoList,
   status: {
-    code: 'FETCHING' | 'CREATING' | 'DELETING' | 'UPDATING' | 'STABLE' | 'ERROR',
+    code: StatusCode,
     errors?: [
       {
         message: string
