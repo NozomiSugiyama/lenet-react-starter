@@ -42,7 +42,7 @@ const reducer = (state: State = initialState, action: Action): Exact<State> => {
       return { ...state, status: { code: 'FETCHING' } }
     }
     case FETCH_TO_DO_LIST_SUCCESS: {
-      // TO_DO: Fix Type Cast
+      // TODO: Fix Type Cast
       const payload: ToDoResponseItem[] = (action.payload: any)
       return {
         ...state,
@@ -54,7 +54,7 @@ const reducer = (state: State = initialState, action: Action): Exact<State> => {
       return { ...state, status: { code: 'ERROR', errors: action.errors } }
     }
     case CREATING_TO_DO: {
-      // TO_DO: Fix Type Cast
+      // TODO: Fix Type Cast
       const payload: CreateToDoItem = (action.payload: any)
       return {
         ...state,
@@ -70,7 +70,7 @@ const reducer = (state: State = initialState, action: Action): Exact<State> => {
       }
     }
     case CREATE_TO_DO_SUCCESS: {
-      // TO_DO: Fix Type Cast
+      // TODO: Fix Type Cast
       const payload: CreateToDoItem = (action.payload: any)
       return {
         ...state,
@@ -88,7 +88,7 @@ const reducer = (state: State = initialState, action: Action): Exact<State> => {
       }
     }
     case CREATE_TO_DO_FAILURE: {
-      // TO_DO: Fix Type Cast
+      // TODO: Fix Type Cast
       const payload: ToDoItem = (action.payload: any)
       return {
         ...state,
@@ -98,7 +98,7 @@ const reducer = (state: State = initialState, action: Action): Exact<State> => {
       }
     }
     case DELETING_TO_DO: {
-      // TO_DO: Fix Type Cast
+      // TODO: Fix Type Cast
       const payload: ToDoItem = (action.payload: any)
       return {
         ...state,
@@ -106,7 +106,7 @@ const reducer = (state: State = initialState, action: Action): Exact<State> => {
       }
     }
     case DELETE_TO_DO_SUCCESS: {
-      // TO_DO: Fix Type Cast
+      // TODO: Fix Type Cast
       const payload: ToDoItem = (action.payload: any)
       return {
         ...state,
@@ -114,7 +114,7 @@ const reducer = (state: State = initialState, action: Action): Exact<State> => {
       }
     }
     case DELETE_TO_DO_FAILURE: {
-      // TO_DO: Fix Type Cast
+      // TODO: Fix Type Cast
       const payload: ToDoItem = (action.payload: any)
       return {
         ...state,
