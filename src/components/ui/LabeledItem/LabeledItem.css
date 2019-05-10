@@ -1,0 +1,19 @@
+.LabeledItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: .5rem;
+}
+
+.LabeledItem + .LabeledItem {
+  margin-left: 1rem;
+}
+
+.LabeledItem > span {
+  color: #555;
+  font-size: .8rem;
+}
+
+.LabeledItem > div {
+  padding-left: .5rem;
+}

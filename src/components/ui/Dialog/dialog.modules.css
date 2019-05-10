@@ -1,0 +1,34 @@
+.DialogRoot {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.3);
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.Dialog {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  max-width: calc(100vw - 16px);
+  min-width: calc(56px * 5);
+  max-height: calc(100vh - 16px);
+  margin: 0 auto;
+  background-color: #FFF;
+  border-radius: 4px;
+}
+
+.Dialog.Visible {
+  transition: all .2s ease-in-out;
+}
+
+.Dialog:not(.Visible) {
+  visibility: hidden;
+  transform: translateY(100vh);
+  transition: all .195s ease-in;
+}
