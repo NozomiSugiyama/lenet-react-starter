@@ -35,6 +35,12 @@ export type CreateToDoItem = {|
   _meta: ToDoMeta
 |}
 
+export type SaveToDoItem = {|
+  id?: string,
+  title: string,
+  days: number
+|}
+
 export type UpdateToDoItem = {|
   id: string,
   title?: string,

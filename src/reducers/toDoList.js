@@ -1,15 +1,15 @@
 // @flow
 
 import {
-  FETCHING_TODO_LIST,
-  FETCH_TODO_LIST_SUCCESS,
-  FETCH_TODO_LIST_FAILURE,
-  CREATING_TODO,
-  CREATE_TODO_SUCCESS,
-  CREATE_TODO_FAILURE,
-  DELETING_TODO,
-  DELETE_TODO_SUCCESS,
-  DELETE_TODO_FAILURE,
+  FETCHING_TO_DO_LIST,
+  FETCH_TO_DO_LIST_SUCCESS,
+  FETCH_TO_DO_LIST_FAILURE,
+  CREATING_TO_DO,
+  CREATE_TO_DO_SUCCESS,
+  CREATE_TO_DO_FAILURE,
+  DELETING_TO_DO,
+  DELETE_TO_DO_SUCCESS,
+  DELETE_TO_DO_FAILURE,
   type Action
 } from '../actions/toDoList'
 import { type ToDoList, type ToDoItem, type CreateToDoItem, type ToDoResponseItem } from '../types/toDo'
@@ -38,11 +38,11 @@ const initialState: State = {
 
 const reducer = (state: State = initialState, action: Action): Exact<State> => {
   switch (action.type) {
-    case FETCHING_TODO_LIST: {
+    case FETCHING_TO_DO_LIST: {
       return { ...state, status: { code: 'FETCHING' } }
     }
-    case FETCH_TODO_LIST_SUCCESS: {
-      // TODO: Fix Type Cast
+    case FETCH_TO_DO_LIST_SUCCESS: {
+      // TO_DO: Fix Type Cast
       const payload: ToDoResponseItem[] = (action.payload: any)
       return {
         ...state,
@@ -50,11 +50,11 @@ const reducer = (state: State = initialState, action: Action): Exact<State> => {
         status: { code: 'STABLE' }
       }
     }
-    case FETCH_TODO_LIST_FAILURE: {
+    case FETCH_TO_DO_LIST_FAILURE: {
       return { ...state, status: { code: 'ERROR', errors: action.errors } }
     }
-    case CREATING_TODO: {
-      // TODO: Fix Type Cast
+    case CREATING_TO_DO: {
+      // TO_DO: Fix Type Cast
       const payload: CreateToDoItem = (action.payload: any)
       return {
         ...state,
@@ -69,8 +69,8 @@ const reducer = (state: State = initialState, action: Action): Exact<State> => {
         })
       }
     }
-    case CREATE_TODO_SUCCESS: {
-      // TODO: Fix Type Cast
+    case CREATE_TO_DO_SUCCESS: {
+      // TO_DO: Fix Type Cast
       const payload: CreateToDoItem = (action.payload: any)
       return {
         ...state,
@@ -87,8 +87,8 @@ const reducer = (state: State = initialState, action: Action): Exact<State> => {
         )
       }
     }
-    case CREATE_TODO_FAILURE: {
-      // TODO: Fix Type Cast
+    case CREATE_TO_DO_FAILURE: {
+      // TO_DO: Fix Type Cast
       const payload: ToDoItem = (action.payload: any)
       return {
         ...state,
@@ -97,24 +97,24 @@ const reducer = (state: State = initialState, action: Action): Exact<State> => {
         )
       }
     }
-    case DELETING_TODO: {
-      // TODO: Fix Type Cast
+    case DELETING_TO_DO: {
+      // TO_DO: Fix Type Cast
       const payload: ToDoItem = (action.payload: any)
       return {
         ...state,
         toDoList: state.toDoList.map(x => (x.id !== payload.id ? { ...x, _status: { code: 'DELETING' } } : x))
       }
     }
-    case DELETE_TODO_SUCCESS: {
-      // TODO: Fix Type Cast
+    case DELETE_TO_DO_SUCCESS: {
+      // TO_DO: Fix Type Cast
       const payload: ToDoItem = (action.payload: any)
       return {
         ...state,
         toDoList: state.toDoList.filter(x => x.id !== payload.id)
       }
     }
-    case DELETE_TODO_FAILURE: {
-      // TODO: Fix Type Cast
+    case DELETE_TO_DO_FAILURE: {
+      // TO_DO: Fix Type Cast
       const payload: ToDoItem = (action.payload: any)
       return {
         ...state,
